@@ -9,5 +9,3 @@ users_paid.loc[:, 'user_id'].isin(calls_04).sum()
 #strata
 result = rc_calls[(rc_calls['date'].between('2020-04-01', '2020-04-30')) & (
     rc_calls['user_id'].isin(rc_users[rc_users['status'] == 'paid']['user_id']))]['user_id'].nunique()
-
-
