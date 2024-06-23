@@ -24,3 +24,13 @@ result = pd.merge(
     left_on=["worker_id", "last_login"],
     right_on=["worker_id", "login_timestamp"],
 ).drop(columns=['last_login'])
+
+#solution from other user using rank
+# Import your libraries
+import pandas as pd
+
+# Start writing code
+worker_logins['emp_login_rank'] = worker_logins.groupby('worker_id',as_index=False)['login_timestamp'].rank(method="first", ascending=False)
+
+
+worker_logins[worker_logins['emp_login_rank'] == 1]
